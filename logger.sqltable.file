@@ -1,0 +1,11 @@
+Create or replace table Kurs09.logger (
+    id          bigint generated always as identity (cycle),
+    loglevel    char(10),
+    text        varchar(2000),
+    extref      varchar(200),
+    program     varchar(300),
+    chgtime     timestamp for each row on update as row change
+                timestamp not null,
+    job         varchar(28) generated always as (qsys2.job_name),
+    primary key (id)
+);
